@@ -1,0 +1,33 @@
+{
+  "name": "tooluniverse-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5188 --strictPort",
+    "build": "tsc -b && vite build",
+    "test:ui": "node tests/browser.mjs",
+    "test:graph": "node tests/knowledge-graph.mjs",
+    "test:benchmark": "node tests/benchmark.mjs",
+    "test:research": "node tests/research.mjs",
+    "test:intelligence": "node tests/intelligence.mjs"
+  },
+  "dependencies": {
+    "cytoscape": "3.35.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-cjk-friendly": "2.3.4",
+    "remark-cjk-friendly-gfm-strikethrough": "2.3.3",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "playwright-core": "^1.56.1",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.2"
+  }
+}

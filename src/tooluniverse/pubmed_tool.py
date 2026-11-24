@@ -477,6 +477,10 @@ class PubMedRESTTool(BaseRESTTool):
                 "doi_url": f"https://doi.org/{doi}" if doi else None,
                 "url": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
                 "mesh_terms": mesh or None,
+                "mesh_headings": [{"id": d.get("UI"), "name": d.text} for d in cit.findall("MeshHeadingList/MeshHeading/DescriptorName") if d.text],
+                "databanks": [{"name": b.findtext("DataBankName"), "accessions": [a.text for a in b.findall("AccessionNumberList/AccessionNumber") if a.text]} for b in art.findall("DataBankList/DataBank")],
+                "date_revised": "-".join(filter(None, [cit.findtext("DateRevised/Year"), cit.findtext("DateRevised/Month"), cit.findtext("DateRevised/Day")] )) or None,
+                "abstract_sections": [{"label": a.get("Label") or a.get("NlmCategory"), "text": "".join(a.itertext()).strip()} for a in art.findall("Abstract/AbstractText")],
                 "publication_types": pub_types or None,
             }
 

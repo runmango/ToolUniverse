@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "tooluniverse": {
+      "command": "D:\\code6\\ToolUniverse\\.venv\\Scripts\\python.exe",
+      "args": ["D:\\code6\\ToolUniverse\\local\\run.py", "mcp"],
+      "env": {"PYTHONIOENCODING": "utf-8", "PYTHONUTF8": "1"}
+    }
+  }
+}

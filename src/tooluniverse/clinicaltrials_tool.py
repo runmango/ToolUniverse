@@ -234,6 +234,7 @@ class CTGovAPITool(BaseRESTTool):
                     "name": iv.get("name"),
                     "type": iv.get("type"),
                     "description": iv.get("description"),
+                    "other_names": iv.get("otherNames", []),
                 }
             )
 
@@ -267,6 +268,7 @@ class CTGovAPITool(BaseRESTTool):
                 {
                     "pmid": ref.get("pmid"),
                     "citation": ref.get("citation"),
+                    "type": ref.get("type"),
                 }
             )
 
@@ -296,6 +298,8 @@ class CTGovAPITool(BaseRESTTool):
                 ),
                 "conditions": cond_mod.get("conditions", []),
                 "keywords": cond_mod.get("keywords", []),
+                "last_update_posted": status_mod.get("lastUpdatePostDateStruct", {}).get("date"),
+                "condition_meshes": data.get("derivedSection", {}).get("conditionBrowseModule", {}).get("meshes", []),
                 "sponsor": sponsor_mod.get("leadSponsor", {}).get("name"),
                 "eligibility_criteria": elig_mod.get("eligibilityCriteria"),
                 "minimum_age": elig_mod.get("minimumAge"),

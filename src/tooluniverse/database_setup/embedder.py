@@ -52,7 +52,8 @@ class Embedder:
     """
 
     def __init__(
-        self, provider: str, model: str, batch_size: int = 100, max_retries: int = 5
+        self, provider: str, model: str, batch_size: int = 100, max_retries: int = 5,
+        *, revision=None, cache_folder=None, local_files_only=False, device=None
     ):
         self.provider = provider
         self.model = model
@@ -95,7 +96,10 @@ class Embedder:
         elif provider == "local":
             from sentence_transformers import SentenceTransformer
 
-            self.client = SentenceTransformer(model)
+            # Optional reproducibility controls; existing callers keep their defaults.
+            self.client = SentenceTransformer(model, revision=revision, cache_folder=cache_folder,
+                                              local_files_only=local_files_only, device=device,
+                                              trust_remote_code=False)
 
         else:
             raise ValueError(f"Unknown provider: {provider}")

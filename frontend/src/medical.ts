@@ -1,0 +1,4 @@
+// Shared frontend projection of medical_core. Modules must not redefine these objects.
+export type MedicalSource = { id: string; provider: string; source_id: string; source_url: string; source_updated_at?: string; fetched_at: string; payload?: unknown };
+export type MedicalEntity = { id: string; revision_id?: string; entity_type: string; standard_name: string; english_name?: string; synonyms: string[]; identifiers: { scheme: string; value: string }[]; properties: Record<string, any>; sources: MedicalSource[] };
+export type MedicalRelation = { human_review_status?: string; id: string; revision_id?: string; relation_type: string; label: string; source_entity: string; target_entity: string; confidence: number; verification_status: string; evidence_source: string; evidence_type: string; evidence_text: string; evidence_field: string; qualifiers: Record<string, unknown>; created_at: string; source_record?: MedicalSource };
