@@ -135,7 +135,7 @@ ClinicalTrials.gov、PubMed 和 UniProt 实测成功。COMMANDS 登记的论文�
 测试命令：
 
 ```powershell
-cd D:\code6\ToolUniverse
+cd D:\code7\AIProject\ToolUniverse
 .\.venv\Scripts\python.exe local\workbench\test_knowledge_graph.py
 .\.venv\Scripts\python.exe local\workbench\test_workbench.py
 $env:PYTHONUTF8='1'

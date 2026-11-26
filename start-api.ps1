@@ -3,7 +3,11 @@ param(
     [switch]$Foreground
 )
 $ErrorActionPreference = 'Stop'
+$projectDirectory = Get-Item -LiteralPath $PSScriptRoot -Force
 $projectRoot = $PSScriptRoot
+if ($projectDirectory.LinkType -eq 'Junction') {
+    $projectRoot = @($projectDirectory.Target)[0]
+}
 $pythonPath = Join-Path $projectRoot '.venv\Scripts\python.exe'
 $runnerPath = Join-Path $projectRoot 'local\run.py'
 $runtimePath = Join-Path $projectRoot '.tooluniverse\runtime'

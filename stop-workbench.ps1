@@ -1,6 +1,11 @@
 $ErrorActionPreference = 'Stop'
-$runnerPath = Join-Path $PSScriptRoot 'local\run.py'
-$pidPath = Join-Path $PSScriptRoot '.tooluniverse\runtime\workbench\server-process.json'
+$projectDirectory = Get-Item -LiteralPath $PSScriptRoot -Force
+$projectRoot = $PSScriptRoot
+if ($projectDirectory.LinkType -eq 'Junction') {
+    $projectRoot = @($projectDirectory.Target)[0]
+}
+$runnerPath = Join-Path $projectRoot 'local\run.py'
+$pidPath = Join-Path $projectRoot '.tooluniverse\runtime\workbench\server-process.json'
 if (-not (Test-Path -LiteralPath $pidPath)) { Write-Host 'No managed workbench process.'; exit 0 }
 $saved = Get-Content -Raw -LiteralPath $pidPath | ConvertFrom-Json
 $process = Get-CimInstance Win32_Process -Filter "ProcessId=$($saved.pid)"

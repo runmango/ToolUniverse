@@ -1,6 +1,6 @@
 # ToolUniverse 本地项目
 
-项目目录：`D:\code6\ToolUniverse`。
+项目目录：`D:\code7\AIProject\ToolUniverse`。
 
 基于 [官方仓库](https://github.com/mims-harvard/ToolUniverse) 的源码安装，版本 **1.5.9**，初始提交 `37bb81a68b332fc5a34b83ead10d36508236ac09`。使用 Python 3.12 和项目内 `.venv`。本地辅助脚本位于 `local/`，上游源码保留原样。
 
@@ -19,7 +19,7 @@
 重启电脑后，双击项目根目录 **`start-workbench.cmd`**，会自动启动所需服务并打开浏览器。也可以执行：
 
 ```powershell
-cd D:\code6\ToolUniverse
+cd D:\code7\AIProject\ToolUniverse
 powershell -NoProfile -ExecutionPolicy Bypass -File .\start-workbench.ps1
 ```
 
@@ -51,7 +51,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\stop-workbench.ps1
 前端修改后重新构建，并重启工作台加载最新后端：
 
 ```powershell
-cd D:\code6\ToolUniverse\frontend
+cd D:\code7\AIProject\ToolUniverse\frontend
 npm.cmd ci
 npm.cmd run build
 ```
@@ -65,7 +65,7 @@ npm.cmd run build
 在 PowerShell 中执行：
 
 ```powershell
-cd D:\code6\ToolUniverse
+cd D:\code7\AIProject\ToolUniverse
 powershell -NoProfile -ExecutionPolicy Bypass -File .\start-api.ps1
 ```
 
